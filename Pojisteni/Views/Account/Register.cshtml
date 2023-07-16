@@ -1,0 +1,42 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Registrace";
+}
+
+<h3>Registrace</h3>
+
+<section>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form class="d-flex flex-column gap-2" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>                
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+				<div>
+					<button type="submit" class="btn btn-outline-primary align-self-start">Registrovat</button>
+					<a class="btn btn-outline-primary" href="@Url.Action("Index", "Users")">Zpět</a>
+				</div>
+                
+            </form>
+			
+        </div>
+		
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

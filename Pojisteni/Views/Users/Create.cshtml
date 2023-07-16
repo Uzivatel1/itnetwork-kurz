@@ -1,0 +1,91 @@
+﻿@model Pojisteni.Models.User
+
+@{
+    ViewData["Title"] = "Nový pojištěnec";
+}
+
+<h2>Nový pojištěnec</h2>
+
+<form asp-action="Create" class="py-5">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Jmeno" class="control-label"></label>
+                <input asp-for="Jmeno" class="form-control" />
+                <span asp-validation-for="Jmeno" class="text-danger"></span>
+            </div>        
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Prijmeni" class="control-label"></label>
+                <input asp-for="Prijmeni" class="form-control" />
+                <span asp-validation-for="Prijmeni" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Telefon" class="control-label"></label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="UliceCislo" class="control-label"></label>
+                <input asp-for="UliceCislo" class="form-control" />
+                <span asp-validation-for="UliceCislo" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Obec" class="control-label"></label>
+                <input asp-for="Obec" class="form-control" />
+                <span asp-validation-for="Obec" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            
+        </div>
+
+        <div class="col-md-6">
+			<div class="form-group">
+				<label asp-for="PSC" class="control-label"></label>
+				<input asp-for="PSC" class="form-control" />
+				<span asp-validation-for="PSC" class="text-danger"></span>
+			</div>
+        </div>
+    </div>
+
+	<div class="container pt-5">
+		<div class="row text-center">
+			<div class="form-group">
+                <input type="submit" value="Uložit" class="btn btn-outline-primary" />
+                <a class="btn btn-outline-primary" asp-action="Index">Zpět</a>
+			</div>
+		</div>
+	</div>
+</form>
+    
+
+

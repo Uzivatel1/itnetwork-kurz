@@ -1,0 +1,73 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+body {
+    font-family: arial,sans-serif;
+    font-size: 16px;
+    margin-bottom: 60px;
+    color: #404041;
+    background: #f6faf9;
+}
+
+body > header {        
+    position: fixed;
+    top: 0;        
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar {
+    background: #d9ebe7;
+}
+
+.navbar:hover {
+    background: #c6e2dc;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    color: #50a096 !important;
+}
+
+.nav-item {
+    font-size: 20px;
+    color: #50a096 !important;
+}
+
+.table {
+    color: #404041;
+    font-size: 16px;    
+}
+
+.form-control {
+    color: #404041;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.d-table-cell {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.btn {
+    font-size: 16px;
+}
+
+.page-link, .page-item.disabled .page-link, .page-item.active .page-link {
+    color: #404041;
+    background: #f6faf9;    
+}
+
+.page-item.active .page-link {
+    border-color: #404041;
+}

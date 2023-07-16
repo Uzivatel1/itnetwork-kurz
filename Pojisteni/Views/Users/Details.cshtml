@@ -1,0 +1,87 @@
+﻿@model Pojisteni.Models.User
+
+@{
+    ViewData["Title"] = "Detail pojištěnce";
+}
+
+<div class="container mb-5">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-3">
+			<img src="~/images/dummy150.png" />
+        </div>
+		
+        <div class="col-md-3">
+			<h3>
+                <div class="row">
+                    @Html.DisplayFor(model => model.Jmeno)
+                    @Html.DisplayFor(model => model.Prijmeni)
+				</div>
+			</h3>
+            <div class="row">
+                @Html.DisplayFor(model => model.UliceCislo)
+            </div>
+            <div class="row">
+                @Html.DisplayFor(model => model.Obec)
+            </div>
+            <div class="row">
+                @Html.DisplayFor(model => model.PSC)
+            </div>
+		</div>
+
+        <div class="col-md-6">
+            <div class="row">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+            <div class="row">
+                @Html.DisplayFor(model => model.Telefon)
+                
+            </div>
+        </div>       
+
+    </div>
+
+</div>
+
+<h2>Sjednaná pojištění</h2>
+
+    <table class="table table-hover table-responsive-md my-5">
+        <thead>
+            <tr>                
+                <th>Pojištění</th>
+                <th>Částka</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Insurance pojistka in Model.Insurances)
+            {
+                <tr style=" cursor:pointer" onclick="window.location='@Url.Action("Details", "Insurances", new { pojistka.Id })';">
+                    <td class="d-table-cell">@pojistka.Typ</td>
+                    <td class="d-table-cell">@pojistka.Castka</td>
+                    <td class="d-table-cell text-end">
+                        @if (User.IsInRole("admin"))
+                        {
+                        <a class="btn btn-outline-warning" asp-action="Edit" asp-controller="Insurances" asp-route-id="@pojistka.Id">Upravit</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="Insurances" asp-route-id="@pojistka.Id">Odstranit</a>
+                        }                    
+                    </td>
+                </tr>
+            }            
+        </tbody>
+    </table>
+
+<div class="container py-3">
+    <div class="row text-center">
+        <div class="col">
+            @if (User.IsInRole("admin"))
+            {
+                <a class="btn btn-outline-primary" href="@Url.Action("Create", "Insurances")">Přidat pojištění</a>
+                <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model?.Id">Upravit pojištěnce</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model?.Id">Odstranit pojištěnce</a>
+            }
+            <a class="btn btn-outline-primary" asp-action="Index">Zpět</a>
+		</div>
+    </div>
+</div>

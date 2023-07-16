@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Pojisteni.Models.Insurance>
+
+@{
+    ViewData["Title"] = "Pojištění";
+}
+
+<h2>Pojištění</h2>
+
+<div class="container py-5">
+    <div class="row text-center">
+        <div class="col">
+            @if (User.IsInRole("admin"))
+            {
+                <a class="btn btn-outline-primary" asp-action="Create">Přidat pojištění</a>
+            }                
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover table-responsive-md">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Typ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Castka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Predmet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlatnostOd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlatnostDo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="cursor:pointer" onclick="window.location='@Url.Action("Details", "Insurances", new { item.Id })';">
+                <td class="d-table-cell">
+                    @Html.DisplayFor(modelItem => item.Typ)                    
+                </td>
+                <td class="d-table-cell">
+                    @Html.DisplayFor(modelItem => item.Castka)                    
+                </td>
+                <td class="d-table-cell">
+                    @Html.DisplayFor(modelItem => item.Predmet)
+                </td>
+                <td class="d-table-cell">
+                    @Html.DisplayFor(modelItem => item.PlatnostOd)
+                </td>
+                <td class="d-table-cell">
+                    @Html.DisplayFor(modelItem => item.PlatnostDo)
+                </td>
+                <td class="d-table-cell">
+                    @Html.DisplayFor(modelItem => item.User.JmenoPrijmeni)
+                </td>
+                <td class="d-table-cell text-end">
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id">Upravit</a>
+                    }                                      
+                </td>
+                <td class="d-table-cell text-start">
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Odstranit</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Stránkování" class="mt-5">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Předchozí">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Předchozí</span>
+            </a>
+        </li>
+        <li class="page-item active"><a class="page-link" href=".">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Další">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Další</span>
+            </a>
+        </li>
+    </ul>
+</nav>
